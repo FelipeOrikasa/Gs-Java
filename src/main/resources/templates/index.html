@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Future Platform - O Futuro do Trabalho</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-rocket-takeoff-fill me-2"></i>Work Future Platform
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-login" href="#login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-3 fw-bold mb-4 animate-fade-in">
+                            Prepare-se para o <span class="text-gradient">Futuro do Trabalho</span>
+                        </h1>
+                        <p class="lead mb-4 animate-fade-in-delay">
+                            Plataforma inteligente de desenvolvimento profissional com Inteligência Artificial. 
+                            Descubra carreiras do futuro, desenvolva habilidades e alcance seu potencial máximo.
+                        </p>
+                        <div class="hero-buttons animate-fade-in-delay-2">
+                            <a href="#login" class="btn btn-primary btn-lg me-3">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Começar Agora
+                            </a>
+                            <a href="#features" class="btn btn-outline-light btn-lg">
+                                <i class="bi bi-info-circle me-2"></i>Saiba Mais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image animate-float">
+                        <div class="floating-card card-1">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            <span>Análise de Carreira</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="bi bi-cpu"></i>
+                            <span>IA Generativa</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="bi bi-lightbulb"></i>
+                            <span>Habilidades</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="login-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="login-card">
+                        <div class="login-header">
+                            <i class="bi bi-shield-lock-fill"></i>
+                            <h2 class="mb-0">Acesso à Plataforma</h2>
+                            <p class="text-muted">Entre com suas credenciais</p>
+                        </div>
+                        <div class="login-body">
+                            <form id="loginForm">
+                                <div class="form-group mb-4">
+                                    <label for="username" class="form-label">
+                                        <i class="bi bi-person-fill me-2"></i>Usuário
+                                    </label>
+                                    <input type="text" class="form-control form-control-lg" id="username" 
+                                           placeholder="Digite seu usuário" required>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="password" class="form-label">
+                                        <i class="bi bi-lock-fill me-2"></i>Senha
+                                    </label>
+                                    <input type="password" class="form-control form-control-lg" id="password" 
+                                           placeholder="Digite sua senha" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>Entrar
+                                </button>
+                                <div id="loginMessage" class="mt-3"></div>
+                            </form>
+                            <div class="login-footer mt-4">
+                                <small class="text-muted">
+                                    <strong>Usuários de teste:</strong><br>
+                                    admin / admin123 | hruser / hr123 | user / user123
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-section py-5" style="display: none;">
+        <div class="container">
+            <div class="dashboard-header mb-5">
+                <h2 class="display-5 fw-bold mb-3">Dashboard</h2>
+                <p class="lead text-muted">Bem-vindo de volta, <span id="userName">Usuário</span>!</p>
+                <button class="btn btn-outline-danger btn-sm" onclick="logout()">
+                    <i class="bi bi-box-arrow-right me-2"></i>Sair
+                </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="stat-card stat-card-1">
+                        <div class="stat-icon">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="skillCount">0</h3>
+                            <p class="stat-label">Habilidades Disponíveis</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card stat-card-2">
+                        <div class="stat-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="careerCount">0</h3>
+                            <p class="stat-label">Carreiras do Futuro</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card stat-card-3">
+                        <div class="stat-icon">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="predictionCount">0</h3>
+                            <p class="stat-label">Previsões com IA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habilidades Section -->
+            <div class="section-container mb-5">
+                <div class="section-header mb-4">
+                    <h3 class="section-title">
+                        <i class="bi bi-trophy-fill me-2"></i>Habilidades Disponíveis
+                    </h3>
+                    <div class="section-filters">
+                        <button class="btn btn-sm btn-filter active" data-filter="all" onclick="filterSkills('all')">Todas</button>
+                        <button class="btn btn-sm btn-filter" data-filter="in-demand" onclick="filterSkills('in-demand')">Em Alta</button>
+                        <button class="btn btn-sm btn-filter" data-filter="future-proof" onclick="filterSkills('future-proof')">Do Futuro</button>
+                    </div>
+                </div>
+                <div id="skillsList" class="skills-grid">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Carregando habilidades...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carreiras do Futuro Section -->
+            <div class="section-container mb-5">
+                <div class="section-header mb-4">
+                    <h3 class="section-title">
+                        <i class="bi bi-graph-up-arrow me-2"></i>Carreiras do Futuro
+                    </h3>
+                </div>
+                <div id="careersList" class="careers-grid">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Carregando carreiras...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treinamentos Section -->
+            <div class="section-container mb-5">
+                <div class="section-header mb-4">
+                    <h3 class="section-title">
+                        <i class="bi bi-book-fill me-2"></i>Treinamentos de Upskilling/Reskilling
+                    </h3>
+                    <div class="section-filters">
+                        <button class="btn btn-sm btn-filter active" data-filter="all" onclick="filterTrainings('all')">Todos</button>
+                        <button class="btn btn-sm btn-filter" data-filter="free" onclick="filterTrainings('free')">Gratuitos</button>
+                        <button class="btn btn-sm btn-filter" data-filter="certified" onclick="filterTrainings('certified')">Com Certificado</button>
+                    </div>
+                </div>
+                <div id="trainingsList" class="trainings-grid">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Carregando treinamentos...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3">Recursos e Funcionalidades</h2>
+                <p class="lead text-muted">Descubra tudo que a plataforma oferece para seu desenvolvimento profissional</p>
+            </div>
+            
+            <!-- Main Features -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-interactive-card" data-feature="ai">
+                        <div class="feature-icon-large">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <h4>Previsões com IA</h4>
+                        <p class="feature-preview">Análises preditivas inteligentes de carreira usando Spring AI e OpenAI</p>
+                        <button class="btn btn-sm btn-outline-light mt-3 feature-toggle">
+                            <i class="bi bi-chevron-down me-2"></i>Saiba Mais
+                        </button>
+                        <div class="feature-details">
+                            <hr class="my-3">
+                            <p><strong>Como funciona:</strong></p>
+                            <ul class="text-start">
+                                <li>Análise de compatibilidade do profissional com carreiras do futuro</li>
+                                <li>Recomendações personalizadas de upskilling e reskilling</li>
+                                <li>Plano de ação detalhado para transição de carreira</li>
+                                <li>Previsões de curto, médio e longo prazo</li>
+                                <li>Análise de potencial salarial e crescimento</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-interactive-card" data-feature="skills">
+                        <div class="feature-icon-large">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <h4>Gestão de Habilidades</h4>
+                        <p class="feature-preview">Cadastro e busca inteligente de habilidades técnicas e soft skills</p>
+                        <button class="btn btn-sm btn-outline-light mt-3 feature-toggle">
+                            <i class="bi bi-chevron-down me-2"></i>Saiba Mais
+                        </button>
+                        <div class="feature-details">
+                            <hr class="my-3">
+                            <p><strong>Funcionalidades:</strong></p>
+                            <ul class="text-start">
+                                <li>Identificação de habilidades em alta demanda</li>
+                                <li>Habilidades do futuro (future-proof)</li>
+                                <li>Categorização por área (Tecnologia, IA/ML, Liderança, etc.)</li>
+                                <li>Níveis de proficiência (Iniciante a Especialista)</li>
+                                <li>Busca e filtros avançados com paginação</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-interactive-card" data-feature="career">
+                        <div class="feature-icon-large">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h4>Caminhos de Carreira</h4>
+                        <p class="feature-preview">Explore carreiras do futuro com requisitos e projeções detalhadas</p>
+                        <button class="btn btn-sm btn-outline-light mt-3 feature-toggle">
+                            <i class="bi bi-chevron-down me-2"></i>Saiba Mais
+                        </button>
+                        <div class="feature-details">
+                            <hr class="my-3">
+                            <p><strong>Informações disponíveis:</strong></p>
+                            <ul class="text-start">
+                                <li>Carreiras do futuro identificadas</li>
+                                <li>Salário médio e projeção de crescimento</li>
+                                <li>Anos estimados para desenvolvimento</li>
+                                <li>Habilidades necessárias para cada carreira</li>
+                                <li>Tipos: Tecnologia, IA, Ciência de Dados, Sustentabilidade</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-interactive-card" data-feature="training">
+                        <div class="feature-icon-large">
+                            <i class="bi bi-book-fill"></i>
+                        </div>
+                        <h4>Treinamentos</h4>
+                        <p class="feature-preview">Plataforma completa de cursos e capacitação profissional</p>
+                        <button class="btn btn-sm btn-outline-light mt-3 feature-toggle">
+                            <i class="bi bi-chevron-down me-2"></i>Saiba Mais
+                        </button>
+                        <div class="feature-details">
+                            <hr class="my-3">
+                            <p><strong>Recursos:</strong></p>
+                            <ul class="text-start">
+                                <li>Treinamentos gratuitos e pagos</li>
+                                <li>Formato: Online, Presencial, Híbrido, Bootcamps</li>
+                                <li>Vinculação com habilidades e carreiras</li>
+                                <li>Sistema de avaliações e certificações</li>
+                                <li>Recomendações baseadas no perfil do usuário</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-interactive-card" data-feature="wellbeing">
+                        <div class="feature-icon-large">
+                            <i class="bi bi-heart-pulse-fill"></i>
+                        </div>
+                        <h4>Bem-estar no Trabalho</h4>
+                        <p class="feature-preview">Monitoramento de saúde mental e satisfação profissional</p>
+                        <button class="btn btn-sm btn-outline-light mt-3 feature-toggle">
+                            <i class="bi bi-chevron-down me-2"></i>Saiba Mais
+                        </button>
+                        <div class="feature-details">
+                            <hr class="my-3">
+                            <p><strong>Métricas acompanhadas:</strong></p>
+                            <ul class="text-start">
+                                <li>Nível de estresse no trabalho</li>
+                                <li>Equilíbrio vida-trabalho</li>
+                                <li>Satisfação profissional</li>
+                                <li>Saúde mental (score de 0-10)</li>
+                                <li>Histórico e tendências ao longo do tempo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-interactive-card" data-feature="tech">
+                        <div class="feature-icon-large">
+                            <i class="bi bi-gear-fill"></i>
+                        </div>
+                        <h4>Tecnologias</h4>
+                        <p class="feature-preview">Stack tecnológico moderno e robusto</p>
+                        <button class="btn btn-sm btn-outline-light mt-3 feature-toggle">
+                            <i class="bi bi-chevron-down me-2"></i>Saiba Mais
+                        </button>
+                        <div class="feature-details">
+                            <hr class="my-3">
+                            <p><strong>Stack completo:</strong></p>
+                            <ul class="text-start">
+                                <li><strong>Spring Boot 3.2.0</strong> - Framework principal</li>
+                                <li><strong>Spring AI</strong> - IA Generativa</li>
+                                <li><strong>Spring Security</strong> - JWT e RBAC</li>
+                                <li><strong>PostgreSQL/H2</strong> - Banco de dados</li>
+                                <li><strong>RabbitMQ</strong> - Mensageria assíncrona</li>
+                                <li><strong>Caffeine Cache</strong> - Performance</li>
+                                <li><strong>Internacionalização</strong> - PT-BR e EN</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3">Sobre o Projeto</h2>
+                <p class="lead text-muted">Conheça a Work Future Platform em detalhes</p>
+            </div>
+            
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="about-card">
+                        <div class="about-icon mb-4">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
+                        <h3 class="mb-4">O Problema</h3>
+                        <p class="mb-3">
+                            Segundo a ONU e a OIT, até 2030, milhões de empregos serão extintos, mas outros tantos serão criados. 
+                            Profissionais precisam de requalificação constante, adaptação ágil e desenvolvimento de competências 
+                            valorizadas como criatividade, pensamento crítico e colaboração.
+                        </p>
+                        <p>
+                            <strong>Como preparar profissionais para carreiras que ainda não existem?</strong> Como garantir 
+                            bem-estar e desenvolvimento contínuo em um mundo de trabalho em transformação?
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="about-card">
+                        <div class="about-icon mb-4">
+                            <i class="bi bi-rocket-takeoff-fill"></i>
+                        </div>
+                        <h3 class="mb-4">Nossa Solução</h3>
+                        <p class="mb-3">
+                            A <strong>Work Future Platform</strong> é uma plataforma web completa que utiliza 
+                            <strong>Inteligência Artificial Generativa</strong> para análise preditiva de carreiras e 
+                            desenvolvimento profissional.
+                        </p>
+                        <p class="mb-3">
+                            Nossa solução permite que profissionais descubram carreiras do futuro, desenvolvam habilidades 
+                            necessárias, recebam recomendações personalizadas de upskilling/reskilling e monitorem seu 
+                            bem-estar no trabalho.
+                        </p>
+                        <p>
+                            Tudo isso com <strong>análises inteligentes baseadas em IA</strong>, processamento assíncrono 
+                            e uma interface moderna e intuitiva.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4 mt-2">
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <div class="stat-box-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h4>Gestão de Usuários</h4>
+                        <p>CRUD completo com informações de carreira, roles e permissões</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <div class="stat-box-icon">
+                            <i class="bi bi-shield-check-fill"></i>
+                        </div>
+                        <h4>Segurança JWT</h4>
+                        <p>Autenticação e autorização robustas com tokens seguros e RBAC</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <div class="stat-box-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <h4>Internacionalização</h4>
+                        <p>Suporte a Português (PT-BR) e Inglês (EN) com mensagens localizadas</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <div class="stat-box-icon">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+                        <h4>Performance</h4>
+                        <p>Cache inteligente (Caffeine) e processamento assíncrono (RabbitMQ)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="architecture-card">
+                        <h3 class="mb-4">
+                            <i class="bi bi-diagram-3-fill me-2"></i>Arquitetura do Sistema
+                        </h3>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="arch-layer">
+                                    <strong>Camada de Apresentação</strong>
+                                    <ul>
+                                        <li>Thymeleaf Templates</li>
+                                        <li>API REST</li>
+                                        <li>Frontend Interativo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="arch-layer">
+                                    <strong>Camada de Negócio</strong>
+                                    <ul>
+                                        <li>Services (Lógica de negócio)</li>
+                                        <li>Spring AI (Análises)</li>
+                                        <li>Mensageria (RabbitMQ)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="arch-layer">
+                                    <strong>Camada de Dados</strong>
+                                    <ul>
+                                        <li>Spring Data JPA</li>
+                                        <li>PostgreSQL / H2</li>
+                                        <li>Caffeine Cache</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="entities-card">
+                        <h3 class="mb-4">
+                            <i class="bi bi-database-fill me-2"></i>Entidades do Domínio
+                        </h3>
+                        <div class="row g-3">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="entity-item">
+                                    <i class="bi bi-person-fill"></i>
+                                    <strong>User</strong> - Profissionais com informações de carreira
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="entity-item">
+                                    <i class="bi bi-trophy-fill"></i>
+                                    <strong>Skill</strong> - Habilidades técnicas e soft skills
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="entity-item">
+                                    <i class="bi bi-graph-up-arrow"></i>
+                                    <strong>CareerPath</strong> - Caminhos de carreira do futuro
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="entity-item">
+                                    <i class="bi bi-book-fill"></i>
+                                    <strong>Training</strong> - Treinamentos e cursos
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="entity-item">
+                                    <i class="bi bi-heart-pulse-fill"></i>
+                                    <strong>Wellbeing</strong> - Bem-estar e saúde mental
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="entity-item">
+                                    <i class="bi bi-robot"></i>
+                                    <strong>CareerPrediction</strong> - Previsões geradas com IA
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <p class="mb-0 text-muted">
+                <i class="bi bi-heart-fill text-danger"></i> 
+                Desenvolvido com Spring Framework e Spring AI - 2025
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

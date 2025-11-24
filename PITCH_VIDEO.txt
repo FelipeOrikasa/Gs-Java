@@ -1,0 +1,41 @@
+TÓPICOS PARA VÍDEO PITCH - WORK FUTURE PLATFORM
+
+Boa tarde.
+
+Apresentamos a Work Future Platform.
+
+Até 2030, milhões de empregos serão extintos e outros criados.
+
+Profissionais precisam de requalificação constante.
+
+Como preparar profissionais para carreiras que ainda não existem?
+
+Plataforma web com Inteligência Artificial Generativa.
+
+Análise preditiva de carreiras.
+
+Recomendações personalizadas de desenvolvimento profissional.
+
+Monitoramento de bem-estar no trabalho.
+
+Previsões inteligentes com Spring AI.
+
+Stack: Spring Boot, Spring AI, RabbitMQ, Spring Security, PostgreSQL.
+
+Diferencial: uso de IA Generativa para análises preditivas.
+
+Arquitetura escalável e segura.
+
+Processamento assíncrono para alta performance.
+
+Profissionais identificam carreiras do futuro.
+
+Recebem recomendações baseadas em IA.
+
+Monitoram bem-estar e acessam treinamentos personalizados.
+
+A Work Future Platform prepara profissionais para o futuro do trabalho.
+
+Obrigado.
+
+

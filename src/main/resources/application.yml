@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: work-future-platform
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/workfuture_db
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=10m
+  
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
+  
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:your-api-key-here}
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.7
+
+server:
+  port: ${PORT:8080}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:your-256-bit-secret-key-for-jwt-token-generation-minimum-32-characters}
+    expiration: 86400000 # 24 hours
+
+logging:
+  level:
+    com.globalsolution: DEBUG
+    org.springframework.security: DEBUG
+
