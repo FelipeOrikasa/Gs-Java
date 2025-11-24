@@ -299,7 +299,9 @@ Este projeto foi desenvolvido para o curso Java Advanced - Global Solution 2025.
 
 ## 👥 Autores
 
-Desenvolvido como projeto acadêmico.
+Felipe Orikasa
+Marcelo Siqueira Bonfim
+Antonio Caue
 
 ## 📞 Suporte
 
